@@ -127,26 +127,32 @@ VALUES
 ('Koffi Mireille','Yamoussoukro','2023-01-05'),
 ('Bamba Adama','San Pedro','2023-04-12');
 
-1
+1- Combien de clients sont enregistrés dans la microfinance ?
 SELECT COUNT(*) AS nbre_total_clients FROM clients;
-2
+
+2- Quel est le solde moyen des comptes ?
 SELECT AVG(solde) AS solde_moyen FROM comptes;
-3
+
+3- Quel est le compte ayant le solde le plus élevé ?
 SELECT * FROM comptes ORDER BY solde DESC LIMIT 1; 
-4
+
+4- Quel est le compte ayant le solde le plus faible ?
 SELECT * FROM comptes ORDER BY solde LIMIT 1; 
-5
+
+5- Combien de clients vivent à Abidjan ?
 SELECT COUNT(*) AS nbre_per_abidjan FROM clients WHERE ville = 'Abidjan';
-6
+
+6- Quel est le montant total des prêts accordés ?
 SELECT SUM(montant) AS total_pret FROM prets;
-7
+
+7- Quel est le montant moyen des prêts ?
 SELECT AVG(montant) AS montant_moy_pret FROM prets;
-8
+
+8- Quels sont les 5 comptes les plus riches ?
 SELECT * FROM comptes ORDER BY solde DESC LIMIT 5; 
-9
+
+9- Combien de prêts ont été accordés par taux d'intérêt ? (GROUP BY)
 SELECT taux_interet, COUNT(*) AS nbre_taux_int FROM prets GROUP BY taux_interet;
-10
-SELECT taux_interet, COUNT(*) AS nombre_prets
-FROM prets
-GROUP BY taux_interet
-HAVING COUNT(*) > 1;
+
+10- Quels taux d'intérêt concernent plus d'un prêt ? (GROUP BY + HAVING)
+SELECT taux_interet, COUNT(*) AS nombre_prets FROM prets GROUP BY taux_interet HAVING COUNT(*) > 1;
